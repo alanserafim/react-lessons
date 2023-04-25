@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container main {
+    height: 60vh;
+    width: 340px;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fefefe;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px 5px rgb(219, 219, 219);
+}
+
+.container button {
+    margin-top: .5em;
+    height: 5vh;
+    width: 100%;
+    border-radius: 0;
+}
