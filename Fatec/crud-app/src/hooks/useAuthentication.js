@@ -5,7 +5,7 @@ import { getAuth,
          updateProfile,
          SignOut
         } from "firebase/auth";
-import { useState, UseEffect } from "react";
+import { useState, UseEffect, useEffect } from "react";
 
 export const useAuthentication = () => {
     const [error, setError] = useState(null);
@@ -54,5 +54,16 @@ export const useAuthentication = () => {
             setError(systemErrorMessage);
         }
 
+    }
+
+    useEffect(()=>{
+        return () => setCancelled(true)
+    }, [])
+    
+    return {
+        auth,
+        loading,
+        error,
+        createUser
     }
 }
