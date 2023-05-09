@@ -3,7 +3,8 @@ import { getAuth,
          createUserWithEmailAndPassword,
          signInWithEmailAndPassword,
          updateProfile,
-         SignOut
+         SignOut,
+         signOut
         } from "firebase/auth";
 import { useState, UseEffect, useEffect } from "react";
 
@@ -52,8 +53,14 @@ export const useAuthentication = () => {
                 "Ocorreu um erro inesperado, tente novamente mais tarde."
             }
             setError(systemErrorMessage);
+            setLoading(false);
         }
 
+    }
+
+    const logout = () => {
+        checkIfIsCancelled();
+        signOut(auth);
     }
 
     useEffect(()=>{
@@ -62,8 +69,9 @@ export const useAuthentication = () => {
     
     return {
         auth,
+        createUser,
         loading,
         error,
-        createUser
+        logout
     }
 }

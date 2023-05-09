@@ -23,18 +23,20 @@ const Cadastro = () => {
       password
     }
 
-    if(password != confirmPassword) {
+    if(password !== confirmPassword) {
       setError("As senhas precisam ser iguais")
       return
     }
 
     const res = await createUser (user)
-    if (setSucess(res)){
-      setDisplayName("")
-      setEmail("")
-      setPassword("")
-      setConfirmPassword("")
+    
+    if (res){
+      setSucess(res)
     }
+    setDisplayName("")
+    setEmail("")
+    setPassword("")
+    setConfirmPassword("")
   }
 
   useEffect(()=>{
@@ -43,6 +45,15 @@ const Cadastro = () => {
     }
   })
   
+  //
+  const resetForm  = () => {
+    setDisplayName("")
+    setEmail("")
+    setPassword("")
+    setConfirmPassword("")
+  }
+
+
   return (
     <div className={style.cadastro}>
       <form className={style.cadastroForm} onSubmit={handleSubmit}>
@@ -65,7 +76,7 @@ const Cadastro = () => {
         </label>
         <div>
           {!loading && <button type="submit" className="btn">Confirmar</button>}
-          {!loading && <button type="reset" className="btn" disabled>Apagar</button> }
+          {!loading && <button type="reset" className="btn" onClick={() => resetForm()}>Apagar</button> }
           {error && <p className='error'>{error}</p>}
           {sucess && <p className='sucesss'>Usuário cadastrado com sucesso</p>}
         </div>
