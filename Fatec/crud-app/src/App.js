@@ -12,9 +12,9 @@ import { useAuthentication } from './hooks/useAuthentication'
 import { onAuthStateChanged } from 'firebase/auth'
 
 function App() {
-  const [user, setUser] = useState(undefined);
-  const { auth } = useAuthentication();
-  const loadingUser = user===undefined;
+  const [user, setUser] = useState(undefined)
+  const {auth} = useAuthentication()
+  const loadingUser = user===undefined
 
   useEffect(()=>{
     onAuthStateChanged(auth, (user)=>{
@@ -30,16 +30,17 @@ function App() {
     <>
     <AuthProvider value={{user}}>
       <BrowserRouter>
-      { user && <Navbar /> }
+      {user && <Navbar />}
         <Routes>
-          <Route path='/perfil' element={user ? <Perfil/> : <Navigate to='/'/> } />
-          <Route path='/' element={!user ? <Home/> : <Navigate to='/perfil'/> } />
-          <Route path='/cadastro' element={<Cadastro/>}/>
+          <Route path='/perfil' element={user ? <Perfil /> : <Navigate to='/' />} />
+          <Route path='/' element={!user ? <Home /> : <Navigate to='/perfil' />} />
+          <Route path='/cadastro' element={<Cadastro />} />
+          
         </Routes>
-        <Footer />
-        </BrowserRouter>
-      </AuthProvider>
-    </>
+      </BrowserRouter>
+      <Footer />
+    </AuthProvider>
+  </>
   );
 }
 

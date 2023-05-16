@@ -6,7 +6,7 @@ import { getAuth,
          SignOut,
          signOut
         } from "firebase/auth";
-import { useState, UseEffect, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export const useAuthentication = () => {
     const [error, setError] = useState(null);
@@ -58,32 +58,33 @@ export const useAuthentication = () => {
 
     }
 
-    const login = async (data) =>{
-        checkIfIsCancelled();
-        setLoading(true);
-        setError(null);
-        try {
-            await signInWithEmailAndPassword(auth, data.email, data.password);
-            setLoading(false);
-        } catch (error){
-            let systemErrorMessage
-            
-            if(error.message.includes('user-not-found')){
-                systemErrorMessage = "Usuário não encontrado"
-            }
-            else if(error.message.includes('wrong-password')){
-                systemErrorMessage = "Senha incorreta"
-            } else {
-                systemErrorMessage = "Ocorreu um erro inesperado. Por favor tente novamente mais tarde"
-            }
-            setError(systemErrorMessage);
-            setLoading(false)
-        }
-    }
-
-    const logout = () => {
+        const logout = () => {
         checkIfIsCancelled();
         signOut(auth);
+    }
+
+    const login = async (data) =>{
+        checkIfIsCancelled()
+        setLoading(true)
+        setError(null)
+        try {
+            await signInWithEmailAndPassword (auth, data.email, data.password)
+            setLoading(false)
+        } catch (error) {
+            let systemErrorMessage
+            if(error.message.includes("user-not-found")){
+                systemErrorMessage = "Usuário não encontrado"
+            }else if(error.message.includes("wrong-password")){
+                systemErrorMessage = "Senha incorreta"
+            }
+            else{
+                systemErrorMessage="Ocorreu um erro inesperado. Por favor, tente mais tarde!"
+            }
+
+            setError(systemErrorMessage)
+            setLoading(false)
+            
+        }
     }
 
     useEffect(()=>{
