@@ -1,8 +1,17 @@
 import React from 'react'
 import styles from "./Home.module.css"
 import { Link } from "react-router-dom"
+import { useState, useEffect } from 'react'
+import { useAuthentication } from '../../hooks/useAuthentication'
 
 const Home = () => {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const { login, error: authError, loading } = useAuthentication();
+  const handleSubmit = async (e) => {}
+
   return (
     <div className={styles.container}>
       <main className={styles.Home}>
