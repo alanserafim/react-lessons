@@ -28,8 +28,8 @@ export const Read = () => {
     <div>
         <ul>
         {
-                Object.keys(ideias || []).map((item, index) => {
-                    <li key={index}>{item.setor}</li>
+                ideias?.map((item, index) => {
+                    <li key={index}>{item}</li>
                 })
             
         }
