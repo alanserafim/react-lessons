@@ -9,6 +9,7 @@ const Create = () => {
   const [usuarioNome, setUsuarioNome] = useState("");
   const [setor, setSetor] = useState("");
   const [ideia, setIdeia] = useState("");
+  const [sucess, setSucess] = useState("")
   
   const submit = async (e) => {
     e.preventDefault();
@@ -23,11 +24,23 @@ const Create = () => {
         console.error("Error adding document: ", e);
       }
 
+      if (e){
+        setSucess(e)
+      }
+    
+
     setUsuarioNome("");
     setSetor("");
     setIdeia("");
+   
   };
-  
+
+  const resetForm  = () => {
+    setUsuarioNome("");
+    setSetor("");
+    setIdeia("");
+  }
+
   return (
     <div>
       <div className={style.ideia}>
@@ -51,7 +64,12 @@ const Create = () => {
           value={ideia}
           onChange={(e) => setIdeia(e.target.value)}
         />
-        <button type="submit">Cadastrar</button>
+        <div className={style.botoes}>
+        <button className={ style.button } type="submit">Cadastrar</button>
+        <button type="reset" className={ style.button } onClick={() => resetForm()}>Apagar</button> 
+        </div>
+       
+        {sucess && <p className='sucesss'>Ideia cadastrada com sucesso</p>}
         </form>
       </div>
     </div>

@@ -20,9 +20,22 @@
     padding: 3em;
 }
 
-.ideia button {
-    margin-top: .5em;
+.button {
+    margin-top: 2em;
     height: 5vh;
     width: 48.5%;
     border-radius: 0;
+    background-color: #076d45;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    font-size: 1em;
+}
+
+.botoes {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
