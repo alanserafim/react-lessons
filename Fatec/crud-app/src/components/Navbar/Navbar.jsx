@@ -17,8 +17,12 @@ const Navbar = () => {
           <li>
             <NavLink to="/perfil">Perfil</NavLink>
           </li>
+          <li>
+          <NavLink to="/create"><button>Create</button></NavLink>
+          </li>
+          <li>
           <NavLink to="/" onClick={logout}><button>Sair</button></NavLink>
-          
+          </li>
         </ul>
       }
     </nav>

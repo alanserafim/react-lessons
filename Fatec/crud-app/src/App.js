@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import { AuthProvider } from './context/AuthContext'
 import { useAuthentication } from './hooks/useAuthentication'
 import { onAuthStateChanged } from 'firebase/auth'
+import Create from './pages/Crud/Create';
 
 function App() {
   const [user, setUser] = useState(undefined)
@@ -35,7 +36,7 @@ function App() {
           <Route path='/perfil' element={user ? <Perfil /> : <Navigate to='/' />} />
           <Route path='/' element={!user ? <Home /> : <Navigate to='/perfil' />} />
           <Route path='/cadastro' element={<Cadastro />} />
-          
+          <Route path='/create' element={<Create />} />
         </Routes>
       </BrowserRouter>
       <Footer />
