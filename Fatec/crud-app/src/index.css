@@ -114,6 +114,15 @@ button[disabled]{
   border-radius: 5px;
 }
 
+.error{
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f516cb;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
 .container .success{
   color: #1a8918;
   background-color: #6fee64;
