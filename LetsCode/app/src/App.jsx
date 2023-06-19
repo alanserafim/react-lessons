@@ -1,6 +1,8 @@
 import MeuBotao from "./assets/components/Botao/Botao"
+import BuscaFetch from "./assets/components/BuscaFetch/BuscaFetch"
 import Contador from "./assets/components/Contador/Contador"
 import Lista from "./assets/components/Lista/Lista"
+import ListaEfeitoColaterais from "./assets/components/Lista_efeitos/ListaEfeitosColaterais"
 import MeuParagrafo from "./assets/components/Paragrafo/MeuParagrafo"
 
 export default function App() {
@@ -19,6 +21,14 @@ export default function App() {
       <br/>
       <br/>
       <Lista/>
+      <br/>
+      <br/>
+      <ListaEfeitoColaterais/>
+      <br/>
+      <br/>
+      <BuscaFetch/>
+      <br/>
+      <br/>
       </div>
     </>
   )
